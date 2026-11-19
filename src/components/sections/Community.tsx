@@ -1,5 +1,6 @@
 import { leadership, honors } from '@/data/community'
 import { Reveal, Section, SubHead } from '@/components/ui/Editorial'
+import { Cited } from '@/components/ui/Cited'
 
 /**
  * Community — leadership roles as three ruled columns, then the honor
@@ -20,7 +21,9 @@ export function Community() {
             <p className="meta tabular-nums">{l.period}</p>
             <h3 className="display mt-2 text-2xl leading-tight">{l.role}</h3>
             <p className="mt-1 text-[15px] font-semibold text-accent">{l.org}</p>
-            <p className="prose-body mt-3 text-[15px]">{l.body}</p>
+            <Cited cite={l.cite} className="prose-body mt-3 text-[15px]">
+              {l.body}
+            </Cited>
           </Reveal>
         ))}
       </div>
@@ -31,7 +34,9 @@ export function Community() {
           {honors.map((h) => (
             <li key={h.title} className="grid grid-cols-[5.5rem_1fr] items-baseline gap-x-4 py-3.5">
               <span className="text-sm tabular-nums text-fg/65">{h.year}</span>
-              <span className="text-[15px] text-fg/85">{h.title}</span>
+              <Cited cite={h.cite} className="text-[15px] text-fg/85">
+                {h.title}
+              </Cited>
             </li>
           ))}
         </ul>

@@ -165,12 +165,12 @@ export function Showcase() {
             {work.map((w, i) => (
               <li key={w.title} className="border-b border-fg/12">
                 <Link href="/work" data-cursor="OPEN" className="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 py-6 transition-colors">
-                  <span className="text-sm tabular-nums text-fg/55">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-sm tabular-nums text-fg/65">{String(i + 1).padStart(2, '0')}</span>
                   <span className="min-w-0">
                     <span className="display block text-2xl leading-tight transition-[color,transform] duration-500 group-hover:translate-x-2 group-hover:text-accent sm:text-3xl">
                       {w.title}
                     </span>
-                    <span className="mt-1 block text-[13px] text-fg/55">
+                    <span className="mt-1 block text-[13px] text-fg/65">
                       {w.org} · {w.year}
                       {w.metric ? ` · ${w.metric.value} ${w.metric.label}` : ''}
                     </span>

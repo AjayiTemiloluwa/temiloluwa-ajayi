@@ -30,11 +30,11 @@ export function Research() {
         {studies.map((study, i) => (
           <Reveal as="li" key={study.id} delay={(i % 3) * 60} className="border-b border-fg/15">
             <Link
-              href={`/research#${study.id}`}
+              href={`/research/${study.id}`}
               data-cursor="READ"
               className="group grid grid-cols-[2rem_1fr_auto] items-start gap-x-4 py-6 transition-colors hover:bg-fg/[0.03] sm:gap-x-6 sm:px-2"
             >
-              <span className="pt-1.5 text-sm tabular-nums text-fg/55">{String(i + 1).padStart(2, '0')}</span>
+              <span className="pt-1.5 text-sm tabular-nums text-fg/65">{String(i + 1).padStart(2, '0')}</span>
               <span className="min-w-0">
                 <span className="display block text-xl leading-snug transition-colors group-hover:text-accent sm:text-2xl">
                   {study.title}

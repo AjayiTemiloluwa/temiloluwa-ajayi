@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react'
 import { profile } from '@/data/resume'
 import { NAV_ROUTES } from '@/data/routes'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { PaintDrops } from '@/components/ui/PaintDrops'
 
 /**
  * Nav — the running head: name on the left set in the display face,
@@ -72,6 +73,7 @@ export function Nav() {
             </span>
             {profile.availability}
           </span>
+          <PaintDrops />
           <ThemeToggle />
           <Link
             href={home ? '#contact' : '/#contact'}
@@ -107,7 +109,7 @@ export function Nav() {
                     onClick={() => setOpen(false)}
                     className="flex items-baseline gap-4 py-3.5"
                   >
-                    <span className="text-xs tabular-nums text-fg/55">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="text-xs tabular-nums text-fg/65">{String(i + 1).padStart(2, '0')}</span>
                     <span className={`font-display text-2xl ${current ? 'italic text-accent' : 'text-fg'}`}>{label}</span>
                   </Link>
                 </li>

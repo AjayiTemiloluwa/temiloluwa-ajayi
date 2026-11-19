@@ -153,7 +153,7 @@ export function SkillModal({ skill, from, onClose }: { skill: string; from: DOMR
                     <span className="block font-semibold leading-snug">{it.title}</span>
                     <span className="mt-0.5 block text-[13px] text-fg/60">{it.meta}</span>
                   </span>
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-fg/50 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" aria-hidden="true" />
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-fg/65 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" aria-hidden="true" />
                 </Link>
               </li>
             ))}

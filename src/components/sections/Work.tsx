@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { work, type WorkItem } from '@/data/work'
 import { countWord } from '@/lib/words'
 import { CONTAINER, Reveal, Section, Tags } from '@/components/ui/Editorial'
+import { Cited } from '@/components/ui/Cited'
 
 /** How many projects the home page previews before handing off to /work. */
 const HOME_PREVIEW = 3
@@ -19,14 +20,16 @@ function Entry({ item, index }: { item: WorkItem; index: number }) {
     <article className="grid gap-x-8 gap-y-4 py-8 sm:grid-cols-12">
       <div className="sm:col-span-8">
         <p className="meta flex flex-wrap items-baseline gap-x-3">
-          <span className="tabular-nums text-fg/55">{String(index + 1).padStart(2, '0')}</span>
+          <span className="tabular-nums text-fg/65">{String(index + 1).padStart(2, '0')}</span>
           <span>
             {item.org} · {item.year}
           </span>
           {item.featured && <span className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">Featured</span>}
         </p>
         <h3 className="display mt-2 text-2xl leading-tight sm:text-[2rem]">{item.title}</h3>
-        <p className="prose-body mt-3 max-w-xl">{item.summary}</p>
+        <Cited cite={item.cite} className="prose-body mt-3 max-w-xl">
+          {item.summary}
+        </Cited>
         <Tags items={item.stack} className="mt-4" />
       </div>
       {item.metric && (

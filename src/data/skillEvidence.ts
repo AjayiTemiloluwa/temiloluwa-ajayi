@@ -44,9 +44,9 @@ export function skillEvidence(skill: string): { group: string; items: Evidence[]
   for (const w of work)
     if (has([w.title, w.summary, ...w.stack].join(' '), words)) items.push({ kind: 'Project', title: w.title, meta: `${w.org} · ${w.year}`, href: '/work' })
   for (const s of studies)
-    if (has([s.title, s.method, ...s.stack].join(' '), words)) items.push({ kind: 'Research', title: s.title, meta: `${s.venue} · ${s.year} · draft`, href: `/research#${s.id}` })
+    if (has([s.title, s.method, ...s.stack].join(' '), words)) items.push({ kind: 'Research', title: s.title, meta: `${s.venue} · ${s.year} · draft`, href: `/research/${s.id}` })
   for (const r of experience)
-    if (has([r.title, ...r.bullets, ...r.tags].join(' '), words)) items.push({ kind: 'Role', title: `${r.title}, ${r.org}`, meta: r.period, href: '/#experience' })
+    if (has([r.title, ...r.bullets.map((b) => b.text), ...r.tags].join(' '), words)) items.push({ kind: 'Role', title: `${r.title}, ${r.org}`, meta: r.period, href: '/#experience' })
   for (const c of allCertifications)
     if (has(c.title, words)) items.push({ kind: 'Credential', title: c.title, meta: `${c.issuer} · ${c.date}`, href: '/credentials' })
   return { group, items: items.slice(0, 8) }

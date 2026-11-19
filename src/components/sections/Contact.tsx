@@ -29,7 +29,6 @@ const LINKS: ContactLink[] = [
   { href: `mailto:${profile.email}`, cursor: 'SAY HELLO', label: 'Email', value: profile.email },
   { href: profile.linkedin, cursor: 'OPEN', label: 'LinkedIn', value: profile.linkedinLabel, external: true },
   { href: profile.github, cursor: 'GITHUB', label: 'GitHub', value: profile.githubLabel, external: true },
-  { href: profile.phoneHref, cursor: 'CALL', label: 'Phone', value: profile.phoneDisplay },
   { href: profile.cvPath, cursor: 'DOWNLOAD', label: 'CV', value: 'Download the CV (PDF)', download: true },
 ]
 

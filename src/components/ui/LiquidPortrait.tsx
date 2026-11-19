@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { gsap, ScrollTrigger, prefersReducedMotion } from '@/lib/gsap'
+import { gsap, ScrollTrigger, prefersReducedMotion, lowPower } from '@/lib/gsap'
 
 /**
  * LiquidPortrait — the hero photo as a living surface (three.js shader).
@@ -143,7 +143,7 @@ export function LiquidPortrait({
   useEffect(() => {
     const el = host.current
     const card = tilt.current
-    if (!el || !card || prefersReducedMotion()) return
+    if (!el || !card || prefersReducedMotion() || lowPower()) return
     let disposed = false
     let cleanup = () => {}
 

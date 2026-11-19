@@ -22,6 +22,8 @@ export type Certification = {
   /** Self-hosted PDF of the certificate, served from /certificates. */
   file?: string
   featured?: boolean
+  /** A short webinar or an event attended: listed apart, left out of the counts. */
+  attended?: true
 }
 
 /** The complete ledger — Google tracks first, then programs and industry. */
@@ -149,6 +151,7 @@ export const allCertifications: Certification[] = [
     date: 'Sep 2025',
     group: 'Data & Programming',
     file: '/certificates/IBM-SkillsBuild-ITExperience-Orientation-2025.pdf',
+    attended: true,
   },
   {
     id: 'google-pm-foundations',
@@ -188,6 +191,7 @@ export const allCertifications: Certification[] = [
     date: 'Aug 2023',
     group: 'Industry & Energy',
     file: '/certificates/EIT-Transforming-Engineering-With-AI-2023.pdf',
+    attended: true,
   },
   {
     id: 'e3-conference',
@@ -196,6 +200,7 @@ export const allCertifications: Certification[] = [
     date: 'Nov 2023',
     group: 'Industry & Energy',
     file: '/certificates/E3-Student-Conference-Attendance-2023.pdf',
+    attended: true,
   },
 ]
 
@@ -210,7 +215,7 @@ export const credentialGroups: { label: CredentialGroup; blurb: string }[] = [
   },
   {
     label: 'Data & Programming',
-    blurb: 'Hands-on Python and analysis practice on Dataquest, plus IBM SkillsBuild.',
+    blurb: 'Hands-on Python and analysis practice on Dataquest.',
   },
   {
     label: 'Leadership & Programs',
@@ -270,7 +275,7 @@ export const credentialsStrip = [
   'Google Data Analytics Certified',
   'Aspire Leaders Program ’24',
   'SPE Service Awardee',
-  'NHEF Scholar',
+  'NHEF Scholars Program',
   'WorldQuant M.Sc in progress',
 ] as const
 
@@ -284,8 +289,8 @@ const framedAlsoInLedger = recognition.filter((r) =>
 ).length
 
 export const credentialStats = {
-  total: allCertifications.length + recognition.length - framedAlsoInLedger,
+  total: allCertifications.filter((c) => !c.attended).length + recognition.length - framedAlsoInLedger,
   verifiable: allCertifications.filter((c) => c.verify).length,
-  issuers: new Set([...allCertifications, ...recognition].map((c) => c.issuer)).size,
+  issuers: new Set([...allCertifications.filter((c) => !c.attended), ...recognition].map((c) => c.issuer)).size,
   framed: recognition.length,
 } as const

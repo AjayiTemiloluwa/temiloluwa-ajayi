@@ -70,6 +70,16 @@ if (typeof window !== 'undefined') {
 export const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+/**
+ * Phones and laptops that should skip the WebGL scenes: Data Saver on, 4 GB of
+ * memory or less, or 4 CPU cores or fewer. They get the plain image instead.
+ */
+export const lowPower = () => {
+  if (typeof navigator === 'undefined') return false
+  const n = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } }
+  return !!n.connection?.saveData || (n.deviceMemory ?? 8) <= 4 || (n.hardwareConcurrency ?? 8) <= 4
+}
+
 export const hasFinePointer = () =>
   typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches
 

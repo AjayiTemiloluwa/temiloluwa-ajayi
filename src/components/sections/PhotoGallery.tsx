@@ -485,7 +485,7 @@ function CaptionPage({ i }: { i: number }) {
   const p = plates[i]
   return (
     <div className="flex h-full flex-col justify-between p-[8%]">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fg/50">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fg/65">
         Plate {String(i + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}
       </p>
       <div>

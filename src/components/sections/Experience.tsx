@@ -1,6 +1,7 @@
 import { experience } from '@/data/experience'
 import { Reveal, Section, Tags } from '@/components/ui/Editorial'
 import { TimelineTrack } from '@/components/ui/TimelineTrack'
+import { Cited } from '@/components/ui/Cited'
 
 /**
  * Experience — the record, newest first. Each role is a ruled row: dates
@@ -37,9 +38,9 @@ export function Experience() {
               <p className="mt-1 text-[15px] font-semibold text-accent">{role.org}</p>
               <ul className="prose-body mt-4 space-y-2 text-[15px]">
                 {role.bullets.map((b) => (
-                  <li key={b} className="flex gap-3">
+                  <li key={b.text} className="flex gap-3">
                     <span className="mt-[0.7em] h-px w-3 shrink-0 bg-fg/40" aria-hidden="true" />
-                    {b}
+                    <Cited cite={b.cite}>{b.text}</Cited>
                   </li>
                 ))}
               </ul>

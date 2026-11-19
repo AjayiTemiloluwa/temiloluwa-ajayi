@@ -86,7 +86,7 @@ export function Hero() {
 
         <div className="mt-14 grid items-end gap-x-12 gap-y-14 sm:mt-20 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p data-rise className="text-sm font-semibold uppercase tracking-[0.16em] text-fg/55">
+            <p data-rise className="text-sm font-semibold uppercase tracking-[0.16em] text-fg/65">
               Right now I’m working on
             </p>
             <p data-rise className="display mt-3 min-h-[2.3em] text-3xl leading-[1.08] sm:text-5xl">
