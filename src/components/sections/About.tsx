@@ -60,7 +60,7 @@ export function About() {
           {pillars.map((p, i) => (
             <Reveal key={p.title} delay={i * 70} className="border-b border-fg/15 py-6">
               <div className="flex items-baseline gap-4">
-                <span className="text-sm tabular-nums text-fg/55">{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-sm tabular-nums text-fg/65">{String(i + 1).padStart(2, '0')}</span>
                 <div>
                   <h3 className="display text-2xl italic">{p.title}</h3>
                   <p className="prose-body mt-2 text-[15px]">{p.body}</p>

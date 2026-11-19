@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap, ScrollTrigger, prefersReducedMotion } from '@/lib/gsap'
+import { gsap, ScrollTrigger, prefersReducedMotion, lowPower } from '@/lib/gsap'
 
 /**
  * HeaderObject — each page's 3D companion (three.js), living in a fixed
@@ -33,7 +33,7 @@ export function HeaderObject({ shape, tone, className = '' }: { shape: HeaderSha
 
   useEffect(() => {
     const el = host.current
-    if (!el || prefersReducedMotion()) return
+    if (!el || prefersReducedMotion() || lowPower()) return
     let disposed = false
     let cleanup = () => {}
 

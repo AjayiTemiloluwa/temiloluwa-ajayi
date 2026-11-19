@@ -20,7 +20,7 @@
   --ember-rgb: 230 100 0;
   --lilac-rgb: 112 98 240;
   --orange-rgb: 230 110 0;
-  --pink-rgb: 214 80 200;
+  --pink-rgb: 176 40 160; /* deepened for text contrast on cream */
   --blue-rgb: 0 140 180;
   --on-accent-rgb: 255 252 225;
 
@@ -170,6 +170,54 @@ body {
   /* round icon button (social marks, menu, back-to-top) */
   .icon-btn {
     @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-fg/20 text-fg/70 transition hover:border-fg hover:text-fg;
+  }
+  /* the receipt on a claim: a small pill that unfolds its source (Cited.tsx) */
+  .cite-chip {
+    @apply relative inline-flex items-center whitespace-nowrap rounded-full border border-accent/40 px-2 align-[0.1em] text-[11px] font-semibold leading-[1.6] tabular-nums tracking-[0.04em] text-accent transition hover:bg-accent hover:text-[rgb(var(--on-accent-rgb))];
+  }
+  /* a 24px touch target without a bigger pill */
+  .cite-chip::before {
+    content: '';
+    @apply absolute -inset-x-1 -inset-y-[5px];
+  }
+  .cite-chip.is-open {
+    @apply bg-accent text-[rgb(var(--on-accent-rgb))];
+  }
+  .cite-card {
+    @apply mt-3 block rounded-xl border border-fg/15 bg-fg/[0.04] p-4;
+    animation: cite-unfold 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .cite-card[hidden] {
+    display: none;
+  }
+}
+
+/* the flare demo's guess slider: a big thumb for fingers */
+.flare-range {
+  accent-color: rgb(var(--accent-rgb));
+  height: 2.75rem;
+  cursor: pointer;
+}
+.flare-range:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+@keyframes cite-unfold {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+    clip-path: inset(0 0 100% 0 round 12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0 round 12px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cite-card {
+    animation: none;
   }
 }
 

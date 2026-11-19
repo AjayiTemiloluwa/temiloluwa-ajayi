@@ -1,8 +1,10 @@
-import { Download } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Download } from 'lucide-react'
 import { researchAreas, studies, gradPath } from '@/data/research'
 import { countWord } from '@/lib/words'
 import { PageShell } from '@/components/PageShell'
 import { CONTAINER, Reveal, Section, Tags } from '@/components/ui/Editorial'
+import { Cited } from '@/components/ui/Cited'
 
 /**
  * /research — the manuscript ledger: the areas of inquiry, each study as
@@ -21,14 +23,14 @@ export default function ResearchPage() {
     <PageShell
       kicker="Research"
       title={[{ text: 'Machine learning for ' }, { text: 'energy problems.', accent: true }]}
-      blurb={`${countWord(studies.length, true)} draft manuscripts, none published yet. Each entry covers the method, results and limits, and you can download the draft.`}
+      blurb={`${countWord(studies.length, true)} draft manuscripts, none published yet. Each entry covers the method, results and limits, with a source chip on every claim that opens the draft at that page.`}
     >
       <Section label="Research areas" tone="mist">
         <div className="grid gap-x-10 border-t border-fg/15 sm:grid-cols-2">
           {researchAreas.map((area, i) => (
             <Reveal key={area.id} delay={i * 60} className="border-b border-fg/15 py-6">
               <div className="flex items-baseline gap-4">
-                <span className="text-sm tabular-nums text-fg/55">{area.id}</span>
+                <span className="text-sm tabular-nums text-fg/65">{area.id}</span>
                 <div>
                   <h3 className="display text-2xl leading-tight">{area.title}</h3>
                   <p className="prose-body mt-2 text-[15px]">{area.blurb}</p>
@@ -71,14 +73,18 @@ export default function ResearchPage() {
               <h2 className="display text-3xl leading-[1.12] sm:text-[2.5rem]">{study.title}</h2>
 
               <p className="eyebrow mt-8">Method</p>
-              <p className="prose-body mt-3 sm:text-lg">{study.method}</p>
+              <Cited cite={study.methodCite} className="prose-body mt-3 sm:text-lg">
+                {study.method}
+              </Cited>
 
               <p className="eyebrow mt-8">Findings</p>
               <ol className="mt-3 divide-y divide-fg/15 border-y border-fg/15">
                 {study.findings.map((f, j) => (
-                  <li key={f} className="grid grid-cols-[2rem_1fr] gap-x-3 py-4">
-                    <span className="pt-0.5 text-sm tabular-nums text-fg/55">{j + 1}</span>
-                    <span className="text-base leading-relaxed text-fg/80">{f}</span>
+                  <li key={f.text} className="grid grid-cols-[2rem_1fr] gap-x-3 py-4">
+                    <span className="pt-0.5 text-sm tabular-nums text-fg/65">{j + 1}</span>
+                    <Cited cite={f.cite} className="text-base leading-relaxed text-fg/80">
+                      {f.text}
+                    </Cited>
                   </li>
                 ))}
               </ol>
@@ -88,9 +94,9 @@ export default function ResearchPage() {
                   <p className="eyebrow mt-8">Limits</p>
                   <ul className="mt-3 space-y-2">
                     {study.limits.map((l) => (
-                      <li key={l} className="flex gap-3 text-[15px] leading-relaxed text-fg/75">
+                      <li key={l.text} className="flex gap-3 text-[15px] leading-relaxed text-fg/75">
                         <span className="mt-[0.75em] h-px w-3 shrink-0 bg-fg/40" aria-hidden="true" />
-                        {l}
+                        <Cited cite={l.cite}>{l.text}</Cited>
                       </li>
                     ))}
                   </ul>
@@ -98,6 +104,11 @@ export default function ResearchPage() {
               )}
 
               <Tags items={study.stack} className="mt-6" />
+
+              <Link href={`/research/${study.id}`} data-cursor="READ" className="link mt-6">
+                {study.demo ? 'Full page, what I’d change, and a game with its results' : 'Full page and what I’d do differently'}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
           </Reveal>
         ))}

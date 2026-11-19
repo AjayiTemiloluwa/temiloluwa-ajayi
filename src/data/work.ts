@@ -1,3 +1,5 @@
+import type { Cite } from '@/data/sources'
+
 /**
  * Selected work — one-line stories of things built. Every summary and
  * figure comes from the matching CV bullet.
@@ -12,11 +14,14 @@ export type WorkItem = {
   /** The headline number pulled out of the summary, shown as a stat callout. */
   metric?: { value: string; label: string }
   featured?: boolean
+  /** The CV line the summary and figure come from. */
+  cite: Cite
 }
 
 export const work: WorkItem[] = [
   {
     title: 'Compliance Management Platform',
+    cite: { doc: 'cv', where: 'Work experience', quote: "integrated with Google Workspace, AWS S3, and automated PDF report generation" },
     org: 'Sankore Investment',
     year: '2026',
     stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'AWS S3'],
@@ -27,6 +32,7 @@ export const work: WorkItem[] = [
   },
   {
     title: 'Automated Compliance Escalation System',
+    cite: { doc: 'cv', where: 'Work experience', quote: "running daily and routing pre-deadline reminders" },
     org: 'Sankore Investment',
     year: '2026',
     stack: ['n8n', 'HTML email templates', 'Audit logging'],
@@ -36,6 +42,7 @@ export const work: WorkItem[] = [
   },
   {
     title: 'Biometric Attendance Prototype',
+    cite: { doc: 'cv', where: 'Work experience', quote: "reduced processing delays by 35 percent and improved access control monitoring accuracy" },
     org: 'SLB Nigeria',
     year: '2025',
     stack: ['Python', 'Data validation', 'Excel dashboards'],
@@ -45,6 +52,7 @@ export const work: WorkItem[] = [
   },
   {
     title: 'Data Pipelines & KPI Tracking',
+    cite: { doc: 'cv', where: 'Work experience', quote: "reducing manual reporting by 40 percent" },
     org: 'GOLEARN Africa',
     year: '2024',
     stack: ['Python', 'SQL', 'Advanced Excel'],
@@ -54,6 +62,7 @@ export const work: WorkItem[] = [
   },
   {
     title: 'Student Impact Study',
+    cite: { doc: 'cv', where: 'Work experience', quote: "applied structured thematic and conceptual" },
     org: 'Freelance Data Science',
     year: '2023',
     stack: ['Pandas', 'NumPy', 'Thematic coding'],
@@ -62,6 +71,7 @@ export const work: WorkItem[] = [
   },
   {
     title: 'Math × Chemistry Correlation Study',
+    cite: { doc: 'cv', where: 'Work experience', quote: "regression analysis in Python, and visualization" },
     org: 'Freelance Data Science',
     year: '2022',
     stack: ['Python regression', 'Matplotlib', 'Tableau'],

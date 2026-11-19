@@ -324,13 +324,13 @@ export function PaintDrops() {
             {/* the hub: the colour under the pointer, and the dice */}
             <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex h-[104px] w-[104px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-fg/10 bg-paper text-center shadow-inner">
               <span className="font-display text-[15px] leading-tight" style={{ color: rgb(shade(shown)) }}>{shown.name}</span>
-              <span className="mt-0.5 px-2 text-[10px] leading-tight text-fg/55">{shown.vibe}</span>
+              <span className="mt-0.5 px-2 text-[10px] leading-tight text-fg/65">{shown.vibe}</span>
               <button type="button" onClick={roll} className="pointer-events-auto mt-1.5 inline-flex items-center gap-1 rounded-full border border-fg/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-fg/75 transition hover:border-fg hover:text-fg" aria-label="Surprise me: spin the wheel">
                 <Dices className="h-3 w-3" aria-hidden="true" /> Spin
               </button>
             </div>
           </div>
-          <p className="text-center text-[11px] text-fg/50">Light or dark? The moon/sun button keeps working with every colour.</p>
+          <p className="text-center text-[11px] text-fg/65">Light or dark? The moon/sun button keeps working with every colour.</p>
         </div>,
         document.body,
       )}

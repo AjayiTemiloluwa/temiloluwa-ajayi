@@ -74,7 +74,8 @@ function Summary() {
 }
 
 function Ledger() {
-  const rows = allCertifications.filter((c) => !c.featured)
+  const rows = allCertifications.filter((c) => !c.featured && !c.attended)
+  const attended = allCertifications.filter((c) => c.attended)
   return (
     <div className="space-y-12">
       {credentialGroups.map((g) => {
@@ -112,6 +113,31 @@ function Ledger() {
           </Reveal>
         )
       })}
+      {attended.length > 0 && (
+        <details className="group border-y border-fg/15 py-4 [&>summary::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4">
+            <span className="display text-xl">Also attended ({attended.length})</span>
+            <span className="meta">Short webinars and events, not counted above</span>
+          </summary>
+          <ul className="mt-3 space-y-2">
+            {attended.map((c) => (
+              <li key={c.id} className="flex flex-wrap items-baseline justify-between gap-x-4 text-[14px]">
+                <span className="text-fg/85">
+                  {c.title} <span className="meta">· {c.issuer}</span>
+                </span>
+                <span className="flex items-center gap-4 text-[13px]">
+                  <span className="tabular-nums text-fg/65">{c.date}</span>
+                  {c.file && (
+                    <a href={c.file} download className="link !text-[13px]">
+                      PDF ↓
+                    </a>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
     </div>
   )
 }

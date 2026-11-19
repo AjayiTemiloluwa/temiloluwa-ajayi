@@ -44,7 +44,7 @@ export function Section({
             const Label = title ? 'p' : 'h2'
             return (
               <Label className="eyebrow flex items-baseline gap-3">
-            {index !== undefined && <span className="tabular-nums text-fg/55">{String(index).padStart(2, '0')}</span>}
+            {index !== undefined && <span className="tabular-nums text-fg/65">{String(index).padStart(2, '0')}</span>}
             {label}
           </Label>
             )
