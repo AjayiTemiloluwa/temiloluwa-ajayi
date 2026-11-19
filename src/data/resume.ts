@@ -13,7 +13,7 @@ export const profile = {
   middleName: 'Samuel',
   lastName: 'Ajayi',
   initials: 'TA',
-  siteUrl: 'https://temiloluwaajayi.vercel.app',
+  siteUrl: 'https://temiloluwa-ajayi.vercel.app',
   /** Current job title, exactly as on the CV. */
   role: 'AI & Automation Analyst',
   location: 'Lagos, Nigeria',
