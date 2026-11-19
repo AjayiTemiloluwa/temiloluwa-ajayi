@@ -15,8 +15,8 @@
   --bg-rgb: 255 252 225;
   --fg-rgb: 14 16 15;
   --mist-rgb: 243 238 205;
-  --accent-rgb: 0 150 48; /* green, deepened for contrast on cream */
-  --accent-dim-rgb: 0 120 40;
+  --accent-rgb: 0 128 40; /* green, deepened for contrast on cream (4.9:1) */
+  --accent-dim-rgb: 0 106 34;
   --ember-rgb: 230 100 0;
   --lilac-rgb: 112 98 240;
   --orange-rgb: 230 110 0;
@@ -583,3 +583,12 @@ h2 .italic {
     border-width: 0.5px;
   }
 }
+
+/* ── Paint flood (ui/PaintDrops.tsx): the new colours open as a circle from where the paint landed.
+   Scoped to the paint throw so any other view transition keeps its own animation. ── */
+html[data-paint-flood]::view-transition-old(root),
+html[data-paint-flood]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html[data-paint-flood]::view-transition-new(root) { z-index: 2; }

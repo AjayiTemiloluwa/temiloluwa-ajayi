@@ -1,3 +1,4 @@
+import { paletteBootScript, paletteCss } from "@/lib/palettes";
 import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { CursorGlow } from "@/components/ui/CursorGlow";
@@ -94,6 +95,8 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: paletteBootScript }} />
+        <style dangerouslySetInnerHTML={{ __html: paletteCss() }} />
       </head>
       <body className="min-h-full bg-paper font-sans text-fg">
         <script
